@@ -1,0 +1,30 @@
+services:
+  customers-db:
+    image: postgres:16
+    container_name: customers-db
+    restart: always
+    environment:
+      POSTGRES_DB: ${CUSTOMERS_DB_NAME}
+      POSTGRES_USER: ${CUSTOMERS_DB_USER}
+      POSTGRES_PASSWORD: ${CUSTOMERS_DB_PASSWORD}
+    ports:
+      - "5433:5432"
+    volumes:
+      - customers_db_data:/var/lib/postgresql/data
+
+  accounts-db:
+    image: postgres:16
+    container_name: accounts-db
+    restart: always
+    environment:
+      POSTGRES_DB: ${ACCOUNTS_DB_NAME}
+      POSTGRES_USER: ${ACCOUNTS_DB_USER}
+      POSTGRES_PASSWORD: ${ACCOUNTS_DB_PASSWORD}
+    ports:
+      - "5434:5432"
+    volumes:
+      - accounts_db_data:/var/lib/postgresql/data
+
+volumes:
+  customers_db_data:
+  accounts_db_data:
