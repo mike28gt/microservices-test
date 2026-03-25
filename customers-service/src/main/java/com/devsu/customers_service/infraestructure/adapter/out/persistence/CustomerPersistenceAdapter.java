@@ -18,7 +18,7 @@ public class CustomerPersistenceAdapter implements CustomerPersistencePort {
 
     @Override
     public Customer save(Customer customer) {
-        return null;
+        return customerJpaRepository.save(customer);
     }
 
     @Override
